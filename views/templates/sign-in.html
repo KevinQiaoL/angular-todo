@@ -1,0 +1,45 @@
+<div class="container" ng-controller="signInCtrl">
+	<form class="form-horizontal" id="login_form" name="login_form" novalidate="">
+		<div class="page-header"><h2 class="page-title">{{title}}</h2></div>
+		<div class="form-group">
+			<label for="#" class="col-sm-3 control-label">用户名</label>
+			<div class="col-sm-4">
+				<input type="text" required="" ng-pattern="/^[A-Za-z]{1}[0-9A-Za-z_]{2,29}$/" name="user_name"
+             ng-model="login.user.name" class="form-control" placeholder="由字母、数字、下划线组成，以字母开头，3-30个字符">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="#" class="col-sm-3 control-label">密码</label>
+			<div class="col-sm-4">
+				<input type="password" class="form-control" ng-model="login.user.password" name="user_password" ng-maxlength="20" ng-minlength="6"  required="">
+			</div>
+		</div>
+		<div class="form-group" ng-show="login_form.$invalid && login_form.$dirty && login.show_error">
+
+        	<div class="col-sm-10 col-sm-offset-3" ng-show="login_form.$invalid && login_form.$dirty && login.show_error">
+	            <div class="alert alert-danger" style="margin-bottom: 0px">
+	                <ul>
+	                	<li ng-show="login_form.user_name.$dirty && login_form.user_name.$error.required">
+	                		用户名不能为空！
+	                	</li>
+	                	<li ng-show="login_form.user_name.$dirty && login_form.user_name.$error.pattern">用户名格式不正确！</li>
+	                    <li ng-show="login_form.user_password.$dirty && login_form.user_password.$error.required">
+	                    	密码不能为空！
+	                    </li>
+	                    <li ng-show="login_form.user_password.$dirty && login_form.user_password.$error.minlength">
+	                    	密码长度不能小于6个字符！
+	                    </li>
+
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+
+	    <div class="form-group">
+	        <div class=" col-sm-offset-3 col-sm-10">
+	            <button type="submit" ng-click="login.submit(login_form)" class="btn btn-success" ng-disabled="login_form.$invalid">提交
+	            </button>
+	        </div>
+	    </div>
+	</form>
+</div>

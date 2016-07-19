@@ -1,0 +1,18 @@
+<div class="container">
+	<form class="form-horizontal">
+		<div class="page-header"><h2 class="page-title">{{title}}</h2></div>
+		<div class="input-group">
+		  <input type="text" class="form-control" ng-model="formData" name="post">
+		  <div class="input-group-btn">
+		    <a class="btn btn-primary" ng-click="createTodo()">增加</a>
+		  </div>
+		</div>
+	</form>
+	<div class="list-group" style="margin-top:30px;">
+	  <a class="list-group-item" ng-repeat="list in lists">
+		    <h4 class="list-group-item-heading">{{list.post}}</h4>
+		    <p class="list-group-item-text">{{list.time.day}}</p>
+		    <span ng-click="deleteTodo(list._id)">删除</span>
+		</a>
+	</div>
+</div>
